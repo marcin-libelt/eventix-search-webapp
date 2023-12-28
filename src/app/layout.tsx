@@ -8,8 +8,8 @@ import Container from "@/components/Container";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Evento",
-  description: "Find every events near you!",
+  title: "Evento - Find every events near you!",
+  description: "Browse more than 10,000 events worldwide",
 };
 
 export default function RootLayout({
