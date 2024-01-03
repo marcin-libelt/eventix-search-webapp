@@ -3,7 +3,7 @@ import React from "react";
 
 const routes = [
   {
-    path: "/terms-condidtions",
+    path: "/terms-conditions",
     name: "Terms & Conditions",
   },
   {
