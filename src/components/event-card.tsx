@@ -1,4 +1,4 @@
-import { EventoEvent } from "@/types";
+import { EventoEvent } from "@/lib/types";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,8 +8,6 @@ type EventCardProps = {
 };
 
 export default function EventCard({ event }: EventCardProps) {
-  console.log(event.date);
-
   const date = new Date(event.date);
   const day = date.toLocaleDateString(undefined, { day: "2-digit" });
   const month = date.toLocaleDateString(undefined, { month: "short" });

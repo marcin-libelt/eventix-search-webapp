@@ -1,4 +1,4 @@
-import { EventoEvent } from "@/types";
+import { EventoEvent } from "@/lib/types";
 import React from "react";
 import EventCard from "./event-card";
 
