@@ -19,7 +19,7 @@ export default function Home() {
       <section className="flex mt-4 gap-x-4 text-sm text-white/50">
         <div className="space-x-2 font-semibold">
           <Link href="/events/austin">Austin</Link>
-          <Link href="/events/seatle">Seatle</Link>
+          <Link href="/events/seattle">Seattle</Link>
         </div>
       </section>
     </main>

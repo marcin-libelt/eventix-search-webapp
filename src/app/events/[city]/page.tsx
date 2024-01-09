@@ -1,16 +1,25 @@
 import H1 from "@/components/H1";
 import EventsList from "@/components/events-list";
-import { EventoEvent } from "@/lib/types";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { capitalize } from "@/lib/utils";
+import { type Metadata } from "next";
 
-type EventsPageProps = {
+type Props = {
   params: {
     city: string;
   };
 };
 
-export default async function EventsPage({ params }: EventsPageProps) {
+export function generateMetadata({ params }: Props): Metadata {
+  const city = params.city;
+  return {
+    title: `Evento - Events in ${capitalize(city)}`,
+    description: "Browse more than 10,000 events worldwide",
+  };
+}
+
+export default function EventsPage({ params }: Props) {
   const city = params.city;
 
   return (
