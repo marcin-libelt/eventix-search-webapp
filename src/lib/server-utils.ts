@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { EventoEvent } from "./types";
+import { EventoEvent } from "@prisma/client";
 
 export async function getEvent(slug: string) {
   const response = await fetch(
