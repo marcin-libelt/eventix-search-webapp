@@ -23,5 +23,6 @@ export async function getEvent(slug: string) {
       slug,
     },
   });
+  if (!event) return notFound();
   return event;
 }
