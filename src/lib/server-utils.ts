@@ -1,29 +1,27 @@
 import { notFound } from "next/navigation";
-import { EventoEvent } from "@prisma/client";
+import { EventoEvent, PrismaClient } from "@prisma/client";
+import { capitalize } from "./utils";
 
-export async function getEvent(slug: string) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
-    {
-      next: {
-        revalidate: 300,
-      },
-    }
-  );
-  const event: EventoEvent = await response.json();
-
-  if (!event) {
-    notFound();
-  }
-
-  return event;
-}
+const prisma = new PrismaClient();
 
 export async function getEvents(city: string) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
-  );
+  const events = await prisma.eventoEvent.findMany({
+    where: {
+      city: city === "all" ? undefined : capitalize(city),
+    },
+    orderBy: {
+      date: "asc",
+    },
+  });
 
-  const events: EventoEvent[] = await response.json();
   return events;
+}
+
+export async function getEvent(slug: string) {
+  const event = await prisma.eventoEvent.findUnique({
+    where: {
+      slug,
+    },
+  });
+  return event;
 }
