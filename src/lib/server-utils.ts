@@ -17,7 +17,21 @@ export async function getEvents(city: string, page: number = 1) {
     skip: (page - 1) * PAGE_SIZE,
   });
 
-  return events;
+  let totalCount;
+  if (city === "all") {
+    totalCount = await prisma.eventoEvent.count();
+  } else {
+    totalCount = await prisma.eventoEvent.count({
+      where: {
+        city: capitalize(city),
+      },
+    });
+  }
+
+  return {
+    events,
+    totalCount,
+  };
 }
 
 export async function getEvent(slug: string) {
