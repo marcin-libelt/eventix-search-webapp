@@ -1,4 +1,4 @@
-import H1 from "@/components/H1";
+import H1 from "@/components/h1";
 import EventsList from "@/components/events-list";
 import { Suspense } from "react";
 import Loading from "./loading";
