@@ -25,6 +25,17 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    {
+      city: "austin",
+    },
+    {
+      city: "seattle",
+    },
+  ];
+}
+
 export default function EventsPage({ params, searchParams }: EventsPageProps) {
   const city = params.city;
   const parsedPage = pageNumberSchema.safeParse(searchParams.page);
